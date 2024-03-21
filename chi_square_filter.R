@@ -1,3 +1,6 @@
+# modified from Ashley Barstow et al. 2022
+# 10.3389/fpls.2022.1056278 
+
 # install.packages("vcfR")
 library(vcfR)
 
