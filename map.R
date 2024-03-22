@@ -4,9 +4,9 @@
 library(dplyr)
 library(ggplot2)
 library(qtl)
-setwd("/home/joey/rqtl/")
+setwd("dir")
 
-b <- read.cross("csv", "", "a.pericarp_subset.qtl.csv", estimate.map=FALSE, na.strings=c("H"), genotypes = c('A', 'B'))
+b <- read.cross("csv", "", "pericarp_subset.qtl.csv", estimate.map=FALSE, na.strings=c("H"), genotypes = c('A', 'B'))
 b <- convert2riself(b)
 
 
