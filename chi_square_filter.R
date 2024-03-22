@@ -14,7 +14,8 @@ vcf <- read.vcfR("PericarpHardness.vcf")
 # Extract the genotype data into a matrix
 gt_matrix <- extract.gt(vcf, element="GT")
 
-# drop the parent HA467, the 160th index 
+# drop the parent HA467, the 160th index
+gt_matrix <- gt_matrix[, -161]
 gt_matrix <- gt_matrix[, -160]
 
 
@@ -32,16 +33,16 @@ chi_square_filter <- function(row) {
   heterozygous_count <- sum(row %in% c("1|0", "0|1", "1/0", "0/1"))
   # total, excluding any missingness
   total_count <- sum(homozygous_count0, homozygous_count1, heterozygous_count) # length(row) 
-  # Calculate the expected count based on F6 inbred expectation
-  expected_homozygous0 <- 0.485 * total_count
-  expected_homozygous1 <- 0.485 * total_count
-  expected_heterozygous <- 0.03 * total_count
+  # Calculate the expected count based on F7 inbred expectation
+  expected_homozygous0 <- 0.4915 * total_count
+  expected_homozygous1 <- 0.4915 * total_count
+  expected_heterozygous <- 0.017 * total_count
   # Perform the chi-square test
   observed <- c(homozygous_count0, homozygous_count1, heterozygous_count)
   expected <- c(expected_homozygous0, expected_homozygous1, expected_heterozygous)
   chisq_test <- chisq.test(observed, p=expected/total_count)
-  # Return TRUE if p-value > 0.10, indicating the marker should be retained
-  return(chisq_test$p.value > 0.10)
+  # Return TRUE if p-value > 0.01, indicating the marker should be retained
+  return(chisq_test$p.value > 0.01)
 }
 
 # Apply the chi-square test to the genotype data
