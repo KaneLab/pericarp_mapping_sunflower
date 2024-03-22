@@ -38,7 +38,7 @@ print(c("Markers before:", ncol(data)-2))
 print(c("Markers after:", ncol(new_data)-2))
 
 #write filtered csv
-write.table(new_data, "ten_k_subset.qtl.csv", quote = F, sep = ",", row.names = F, col.names = T, na = "")
+write.table(new_data, "pericarp_subset.qtl.csv", quote = F, sep = ",", row.names = F, col.names = T, na = "")
 
 
 
