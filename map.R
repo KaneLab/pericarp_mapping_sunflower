@@ -102,72 +102,11 @@ high_lods16_s <- ch16_s[which(ch16_s$lod > 6.42),]
 summary(ch5)
 summary(ch5_s)
 
-summary(ch9)
 summary(ch16)
 summary(ch16_s)
 
 
 
-
-
-
-
-
-
-## Interval mapping
-#residuals phenotype
-b.em <- scanone(b, pheno.col = 4, method="em")
-plot(b.em, col=c("red"), main = "Residuals Phenotype (Strength Independent of Thickness)", ylab="LOD score")
-#strength
-b.em_s <- scanone(b, pheno.col = 3, method="em")
-plot(b.em_s, col=c("red"), main = "Strength (Penetrometer)", ylab="LOD score")
-#thick
-b.em_t <- scanone(b, pheno.col = 2, method="em")
-plot(b.em_t, col=c("red"), main = "Thickness", ylab="LOD score")
-
-
-### Haley-Knott
-#residuals phenotype
-b.hk <- scanone(b, pheno.col = 4, method="hk")
-plot(b.hk, col=c("blue"), main = "Residuals Phenotype (Strength Independent of Thickness)", ylab="LOD score")
-
-#both together
-plot(b.hk, b.em, col=c("blue","red"), main = "", ylab="LOD score")
-
-#strength
-b.hk_s <- scanone(b, pheno.col = 3, method="hk")
-plot(b.hk_s, col=c("blue","red"), main = "Strength (Penetrometer)", ylab="LOD score")
-#thick
-b.hk_t <- scanone(b, pheno.col = 2, method="hk")
-plot(b.hk_t, col=c("blue","red"), main = "Thickness", ylab="LOD score")
-
-summary(b.hk)
-summary(b.hk_s)
-summary(b.hk_t)
-
-
-
-
-
-### estimate map, genetic distance
-em <- est.map(b, error.prob = 0.0001, map.function = "kosambi", verbose = TRUE)
-
-b_em<-replace.map(b,em)
-
-# write.cross(b_em, format = "csv", filestem = "estimated_map")
-# est_map <- read.csv("estimated_map.csv")
-
-em.c <- cim(em, pheno.col = 4, map.function="kosambi")
-
-em_r <- est.rf(b_em)
-plot.rf(hyper, alternate.chrid=TRUE)
-
-
-em2 <- est.map()
-summary(em)
-plotMap(em)
-
-plot(em, b$pheno)
 
 
 
