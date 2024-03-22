@@ -1,4 +1,4 @@
-Repository for all R code used in Joey's pericarp mapping project.
+Repository for all R code used in the pericarp mapping project.
 
 VCF filtering and formatting are written to follow this pipeline:
 
