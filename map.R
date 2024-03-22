@@ -1,9 +1,8 @@
 #genetic map for pericarp RIL population
 
-
 library(dplyr)
-library(ggplot2)
 library(qtl)
+
 setwd("dir")
 
 b <- read.cross("csv", "", "pericarp_subset.qtl.csv", estimate.map=FALSE, na.strings=c("H"), genotypes = c('A', 'B'))
