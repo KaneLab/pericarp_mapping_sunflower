@@ -1,6 +1,7 @@
 Repository for all R code used in the pericarp mapping project.
 -
 chi_square_filter.R : filtering for segregation distortion
+
 map.R : create genetic map, perform QTL analysis (CIM), generate plots
 
 
